@@ -9,15 +9,21 @@
 # deben estar isntaladas todas las lirberias aca mensionadas
 # psycopg2 debe instlaalrse asi: sudo pip install psycopg2-binary
 # ya se puede usar la base de datos unida a flask
+# Good Reads key
+# key: O3iEdmNy0enR3tZi4CmjQ
+# secret: SYGiLDMUmFWVtVyhSpqU5b7CYnOPzCHzHhAOGjW7w
 
+
+import requests
 import os
+import json
 
-from funciones      import primera,admBD
-from flask          import Flask, session,render_template
-from flask_session  import Session
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy     import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
+from funciones          import primera,admBD
+from flask              import Flask, session,render_template,request
+from flask_session      import Session
+from flask_sqlalchemy   import SQLAlchemy
+from sqlalchemy         import create_engine
+from sqlalchemy.orm     import scoped_session, sessionmaker
 
 # Check for environment variable
 
@@ -28,6 +34,11 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 #app.config["SESSION_PERMANENT"] = False
 #app.config["SESSION_TYPE"] = "filesystem"
 #Session(app)
+
+# peticion a URL goodReads
+res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "O3iEdmNy0enR3tZi4CmjQ", "isbns": "0380795272"})
+res2 = res.json()
+print(res2['books'][0]['average_rating'])
 
 # configurar la base de datos
 app = Flask(__name__)
@@ -44,6 +55,11 @@ for valores in query:
 
 objeto = primera("hola","mundo")
 
-@app.route('/')
+@app.route('/',methods=['GET'])
 def index():
     return render_template("index.html",variablehtml=objeto.funcion1())
+
+@app.route('/',methods=['GET'])
+def algo():
+    variable1=request.args.get('texto1')
+    return render_template("index.html",variablehtml=objeto.funcion1(),resultadohtml=variable1)

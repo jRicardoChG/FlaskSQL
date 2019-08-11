@@ -7,8 +7,14 @@
     <title>Hola mundo</title>
 </head>
 <body>
-
     <h3>{{ variablehtml }}</h3>
+    {%if resultadohtml %}
+        <h3>{{ resultadohtml }}</h3>
+    {%endif%}
+    <form action="/" id = "formulario" method="GET">
+            <input type="text" name="texto1">
+            <button type= "submit">enviar</button> 
+    </form>
 </body>
 </html>
 
