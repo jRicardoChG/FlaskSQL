@@ -11,9 +11,23 @@
     {%if resultadohtml %}
         <h3>{{ resultadohtml }}</h3>
     {%endif%}
-    <form action="/" id = "formulario" method="GET">
+    {%if resultadohtml2 %}
+        <h3>{{ resultadohtml2 }}</h3>
+    {%endif%}
+    {%if userhtml %}
+        <h4>{{ userhtml }}</h4>
+    {%endif%}
+    {%if passwordhtml %}
+        <h4>{{ passwordhtml }}</h4>
+    {%endif%}
+    <form action="/landing" name= "formularioget" method="GET">
             <input type="text" name="texto1">
             <button type= "submit">enviar</button> 
+    </form>
+    <form action = "/logueado" name="formulariopost" method="POST">
+        <input type="text" name="usuarioid">
+        <input type="password" name="passworduser">
+        <button type="submit">Loguearse</button>
     </form>
 </body>
 </html>

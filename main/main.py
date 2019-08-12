@@ -29,12 +29,6 @@ from sqlalchemy.orm     import scoped_session, sessionmaker
 
 # if not os.getenv('postgresql://ricardo:Theendworld1220@localhost:5432/var/run/postgres/miprimeradb.db'):
 
-
-# Configure session to use filesystem
-#app.config["SESSION_PERMANENT"] = False
-#app.config["SESSION_TYPE"] = "filesystem"
-#Session(app)
-
 # peticion a URL goodReads
 res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "O3iEdmNy0enR3tZi4CmjQ", "isbns": "0380795272"})
 res2 = res.json()
@@ -48,6 +42,11 @@ engine = create_engine('postgresql://ricardo:Theendworld1220@localhost:5432/mipr
 #db = SQLAlchemy(app)
 db = scoped_session(sessionmaker(bind=engine))
 
+# Configure session to use filesystem
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
+
 #empieza codigo de mi backend
 query = db.execute('SELECT id,name,lastname FROM idusuario').fetchall()
 for valores in query:
@@ -59,7 +58,26 @@ objeto = primera("hola","mundo")
 def index():
     return render_template("index.html",variablehtml=objeto.funcion1())
 
-@app.route('/',methods=['GET'])
-def algo():
-    variable1=request.args.get('texto1')
+@app.route("/landing",methods=["GET"])
+def landing():
+    variable1 = request.args.get("texto1")
     return render_template("index.html",variablehtml=objeto.funcion1(),resultadohtml=variable1)
+
+@app.route("/<string:name>")
+def isbn(name):
+    variable2 = name
+    return render_template("index.html",variablehtml=objeto.funcion1(),resultadohtml2=variable2)
+
+@app.route("/logueado",methods=["POST"])
+def logueado():
+    session["datosUser"]=None
+    if session.get("datosUser")==None:
+        session["datosUser"]=[]
+    if request.method == "POST":
+        var1 = request.form.get("usuarioid")
+        var2 = request.form.get("passworduser")
+        session["datosUser"][len(session["datosUser"]):]=[var1]
+        session["datosUser"][len(session["datosUser"]):]=[var2]
+    print(session["datosUser"])
+    return render_template("index.html",passwordhtml=session["datosUser"][1],userhtml=session["datosUser"][0])
+
