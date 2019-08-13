@@ -29,17 +29,15 @@ from sqlalchemy.orm     import scoped_session, sessionmaker
 
 # if not os.getenv('postgresql://ricardo:Theendworld1220@localhost:5432/var/run/postgres/miprimeradb.db'):
 
-# peticion a URL goodReads
+# peticion a URL goodReads tomo un unico valor de la peticion
 res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "O3iEdmNy0enR3tZi4CmjQ", "isbns": "0380795272"})
 res2 = res.json()
 print(res2['books'][0]['average_rating'])
 
-# configurar la base de datos
+# configurar la base de datos, hago ocnexxion con base de datos en posgres con usuario ricardo
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb'
 engine = create_engine('postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb')
-# Set up database
-#db = SQLAlchemy(app)
 db = scoped_session(sessionmaker(bind=engine))
 
 # Configure session to use filesystem
@@ -53,21 +51,24 @@ for valores in query:
     print("hola id: ",valores.id,"name: ",valores.name,"lastname: ",valores.lastname)
 
 objeto = primera("hola","mundo")
-
+# pagina principal de la aplciacion actual
 @app.route('/',methods=['GET'])
 def index():
     return render_template("index.html",variablehtml=objeto.funcion1())
 
+# realizo un get con un formuario con method get y obtengo el parametro d ela peticion 
 @app.route("/landing",methods=["GET"])
 def landing():
     variable1 = request.args.get("texto1")
     return render_template("index.html",variablehtml=objeto.funcion1(),resultadohtml=variable1)
 
+# mi app responde segun lo que escribe el usuario en la URL y muestro lo que escribio en el DOM
 @app.route("/<string:name>")
 def isbn(name):
     variable2 = name
     return render_template("index.html",variablehtml=objeto.funcion1(),resultadohtml2=variable2)
 
+# realizo un post con los datos del usuario y los muestro en el DOM
 @app.route("/logueado",methods=["POST"])
 def logueado():
     session["datosUser"]=None
