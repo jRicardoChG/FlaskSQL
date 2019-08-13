@@ -6,7 +6,7 @@
 # sudo -i -u postgres
 # desde aca se peuden ya crear ususarios y tablas, para entrar a postgres se usa el comnado psql
 # se crea la tabla en psql 
-# deben estar isntaladas todas las lirberias aca mensionadas
+# deben estar isntaladas todas las librerias aca mencionadas
 # psycopg2 debe instlaalrse asi: sudo pip install psycopg2-binary
 # ya se puede usar la base de datos unida a flask
 # Good Reads key
@@ -34,7 +34,7 @@ res = requests.get("https://www.goodreads.com/book/review_counts.json", params={
 res2 = res.json()
 print(res2['books'][0]['average_rating'])
 
-# configurar la base de datos, hago ocnexxion con base de datos en posgres con usuario ricardo
+# configurar la base de datos, hago conexion con base de datos en posgres con usuario ricardo y mi app flask
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb'
 engine = create_engine('postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb')

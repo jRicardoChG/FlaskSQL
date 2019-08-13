@@ -12,11 +12,13 @@ db = scoped_session(sessionmaker(bind=engine))
 
 # creo una varialbe para guardar los valores fuera del archivo csv para no tneer que leerlo siempre
 variable = []
+
 # leo el archivo csv y lo guardo en variable
 with open('books.csv') as csvfile:
    archivocsv = csv.reader(csvfile, delimiter=',')
    for row in archivocsv:
        variable[len(variable):] = [row]  
+
 #elimino los titilos del archivo dado que los años vienen en str y necesito guardarlos en entero, porque asi diseñe la base de datos
 variable.pop(0)
 
