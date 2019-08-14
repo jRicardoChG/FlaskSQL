@@ -1,0 +1,66 @@
+
+/*menu desplegable*/
+#menubarras
+{
+    display:none;
+}
+#menubarrasl
+{
+    margin: 0px 0% 0px 0px;
+    padding: 5px; 
+}
+
+#menubarras:not(checked) ~ .menuDesplegable
+{
+    width: 0px;
+}
+
+#menubarras:checked ~ .menuDesplegable
+{
+    width:100%;
+}
+
+#barras
+{
+    padding: 0px;
+    z-index: 100;
+}
+
+#menubarrasl > img
+{
+    width: 30px;
+    height: 30px;
+    z-index: 100;
+}
+
+.menuDesplegable
+{
+    overflow: hidden;
+    transition: all 0.4s;
+    position:absolute;
+    top:40px;
+    font-size: 25px;
+    height:93vh;
+    z-index: 100;
+}
+
+.menuDesplegable > div 
+{
+    padding: 5px 0px 5px 10px;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* tamaño extra-small*/ 
+@media (min-width:576px)
+{
+    .menuDesplegable
+    {
+        display:none;
+    }
+    .hidden
+    {
+        display:none !important;
+    }
+}
+/*----------------------------------------------------------------------------*/

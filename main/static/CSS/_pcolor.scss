@@ -1,0 +1,121 @@
+/* Para poner border a todos los elementos : JAVASCRIPT */
+/*----------------------------------------------------------------------------*/
+$colorFondo:#012840;
+$colorFondoBody: #01101a;
+$colorFuente: white;
+$colorhover:#337AA6;
+/*Colores prinicpales de la pagina*/
+$color1:#023859;
+$color2:#337AA6;
+$color3:#BFA5A3;
+$color4:#012840;
+$color5:#89B3D9;
+$color6:rgb(230, 230, 230);
+/*    */
+
+// .global {
+//     border-style: dotted;
+//     border-width: 1px;
+//     border-color: rgb(161, 160, 160);
+//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+//     font-style: italic;
+// }
+main > article
+{
+    background-color: $color6;
+}
+footer section 
+{
+    padding-top: 7px;
+    background-color: $color6;
+} 
+main article
+{
+    padding-top: 7px;
+}
+article ul
+{
+    margin-bottom: 0px;
+}
+article h2
+{
+    background-color: $colorFondo;
+    color: $colorFuente;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+section h2
+{
+    background-color: $colorFondo;
+    color: $colorFuente;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+#html a
+{
+    text-decoration: none;
+}
+
+#header {
+    background-color: $colorFondo;
+    div > div > div:hover
+    {
+        border-radius: 6px;
+        background-color: $colorhover;
+    }
+    .header {
+        a {
+            color: $colorFuente;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+        :hover
+        {
+            background-color: $colorhover;
+        }
+    }
+}
+#menu
+{
+    div h2
+    {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-style: italic;
+        font-style: oblique;
+    }
+
+    background-color: $colorFondo;
+    color: $colorFuente;
+    .botoncentrar div:hover
+    {
+        background-color: $colorhover;
+    }
+}
+
+.menuDesplegable {
+    background-color: $colorFondo;
+    opacity: 0.9;
+
+    div a {
+        color: $colorFuente;
+    }
+
+    div:hover {
+        background-color: $colorhover;
+    }
+}
+
+.lista > li > label
+{
+    padding-left: 10px;
+}
+
+.lista > li > label:hover
+{
+    border-radius: 5px;
+    background-color:$color5;
+}
+
+html body
+{
+    background-color: $colorFondoBody;
+}

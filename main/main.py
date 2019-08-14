@@ -4,7 +4,7 @@
 #si se desea usar otro usuario par laa base de datos, este debe ser un usuario nativo linux
 # se necesita logearse con con el usuario posrtgres al sistema operativ
 # sudo -i -u postgres
-# desde aca se peuden ya crear ususarios y tablas, para entrar a postgres se usa el comnado psql
+# desde aca se peuden ya crear ususarios y tablas, para entrar a postgres se usa el comando psql
 # se crea la tabla en psql 
 # deben estar isntaladas todas las librerias aca mencionadas
 # psycopg2 debe instlaalrse asi: sudo pip install psycopg2-binary
@@ -27,8 +27,6 @@ from sqlalchemy.orm     import scoped_session, sessionmaker
 
 # Check for environment variable
 
-# if not os.getenv('postgresql://ricardo:Theendworld1220@localhost:5432/var/run/postgres/miprimeradb.db'):
-
 # peticion a URL goodReads tomo un unico valor de la peticion
 res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "O3iEdmNy0enR3tZi4CmjQ", "isbns": "0380795272"})
 res2 = res.json()
@@ -45,7 +43,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-#empieza codigo de mi backend
+#empieza codigo de mi app
 query = db.execute('SELECT id,name,lastname FROM idusuario').fetchall()
 for valores in query:
     print("hola id: ",valores.id,"name: ",valores.name,"lastname: ",valores.lastname)

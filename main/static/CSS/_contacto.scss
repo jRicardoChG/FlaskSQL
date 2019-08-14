@@ -1,0 +1,61 @@
+
+/* Contactos */
+@media (min-width:768px)
+{
+    .Creador
+    {
+        padding: 0px !important;
+    }
+    .imagenCreador > img
+    {
+        width: 100%;
+        height:auto;
+    }
+    .textoContactos
+    {
+        padding: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .textoContactos > div 
+    {
+        width: 100%;
+    }
+    .imagenCreador
+    {
+        padding: 0px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media (max-width:769px)
+{
+    .imagenCreador
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .imagenCreador > img
+    {
+        width: 235px;
+        height:auto;
+        padding: 0px;
+    }
+}
+
+#contactos
+{
+    margin:0px;
+}
+
+#contactos > div > div > div > div > p
+{
+    font-style: italic;
+    text-align: center;
+    margin:0px;
+    width: 100%;
+}
