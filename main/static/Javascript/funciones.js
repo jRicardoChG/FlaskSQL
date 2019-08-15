@@ -1,5 +1,3 @@
-
-
 // funcion recursiva para aplicar clase global a todos los elementos
 function recurAdd(tag) {
     var temp = document.querySelector(tag);
@@ -28,6 +26,5 @@ function recurRem(tag) {
     return;
 }
 
-
-//recurAdd("html");
+recurAdd("html");
 

@@ -9,17 +9,42 @@ $color1:#023859;
 $color2:#337AA6;
 $color3:#BFA5A3;
 $color4:#012840;
+$color4dark:#092638;
 $color5:#89B3D9;
 $color6:rgb(230, 230, 230);
-/*    */
 
-// .global {
-//     border-style: dotted;
-//     border-width: 1px;
-//     border-color: rgb(161, 160, 160);
-//     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-//     font-style: italic;
-// }
+// estilos de la bara de logueado
+#logueado
+{
+    background-color: $color4dark;
+    div
+    {
+        div
+        {
+            div
+            {
+                border-radius: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                h4
+                {
+                    padding : 5px;
+                    margin : 0px;
+                    color : $colorFuente;
+                    font-size : 15px;
+                    font-weight: bold; 
+                }
+            }
+            
+        }
+    }
+}
+/*    */
+.global {
+    border-style: dotted;
+    border-width: 1px;
+}
 main > article
 {
     background-color: $color6;

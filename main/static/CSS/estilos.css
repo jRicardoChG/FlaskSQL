@@ -2,7 +2,25 @@
 /* Para poner border a todos los elementos : JAVASCRIPT */
 /*----------------------------------------------------------------------------*/
 /*Colores prinicpales de la pagina*/
+#logueado {
+  background-color: #092638; }
+  #logueado div div div {
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #logueado div div div h4 {
+      padding: 5px;
+      margin: 0px;
+      color: white;
+      font-size: 15px;
+      font-weight: bold; }
+
 /*    */
+.global {
+  border-style: dotted;
+  border-width: 1px; }
+
 main > article {
   background-color: #e6e6e6; }
 
