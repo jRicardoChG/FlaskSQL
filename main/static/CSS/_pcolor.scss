@@ -3,8 +3,9 @@
 $colorFondo:#012840;
 $colorFondoBody: #01101a;
 $colorFuente: white;
-$colorhover:#337AA6;
-/*Colores prinicpales de la pagina*/
+$colorhover:#89B3D9;
+$colorBackgroundlogueado: rgb(76, 115, 151);
+/*Colores principales de la pagina*/
 $color1:#023859;
 $color2:#337AA6;
 $color3:#BFA5A3;
@@ -16,27 +17,84 @@ $color6:rgb(230, 230, 230);
 // estilos de la bara de logueado
 #logueado
 {
-    background-color: $color4dark;
+    background-color: $colorBackgroundlogueado;
     div
     {
-        div
+        display: flex;
+        align-items: center;
+        :nth-child(1)
         {
             div
             {
-                border-radius: 5px;
+                display: flex;
+                align-items: center;  
+                h4
+                {
+                    width: 100%;
+                    height:100%;
+                    padding : 5px;
+                    margin : 0px;
+                    color : $colorFuente;
+                    font-size : 15px;
+                    font-weight: bold; 
+                }              
+            }
+        }
+        :nth-child(2)
+        {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+            div
+            {
+                display: flex;
+                justify-content: center;
+                align-items: center;  
                 h4
                 {
+                    text-align: center;
+                    width: 100%;
+                    height:100%;
+                    padding : 5px;
+                    margin : 0px;
+                    color : $colorFuente;
+                    font-size : 15px;
+                    font-weight: bold; 
+                }              
+            }
+        }
+        :nth-child(3)
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            div
+            {   
+                :hover{
+                    background:$colorhover; 
+                }        
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                form
+                {
+                    border-radius: 5px;
+                }
+                button
+                {
+                    background: transparent;
+                    border-color: transparent;
+                    border-radius: 5px;
+                    text-align: center;
+                    width: 100%;
+                    height:100%;
                     padding : 5px;
                     margin : 0px;
                     color : $colorFuente;
                     font-size : 15px;
                     font-weight: bold; 
                 }
-            }
-            
+            }       
         }
     }
 }

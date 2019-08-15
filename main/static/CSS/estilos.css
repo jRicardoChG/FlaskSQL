@@ -1,20 +1,64 @@
 @charset "UTF-8";
 /* Para poner border a todos los elementos : JAVASCRIPT */
 /*----------------------------------------------------------------------------*/
-/*Colores prinicpales de la pagina*/
+/*Colores principales de la pagina*/
 #logueado {
-  background-color: #092638; }
-  #logueado div div div {
-    border-radius: 5px;
+  background-color: #4c7397; }
+  #logueado div {
     display: flex;
-    justify-content: center;
     align-items: center; }
-    #logueado div div div h4 {
-      padding: 5px;
-      margin: 0px;
-      color: white;
-      font-size: 15px;
-      font-weight: bold; }
+    #logueado div :nth-child(1) div {
+      display: flex;
+      align-items: center; }
+      #logueado div :nth-child(1) div h4 {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+        margin: 0px;
+        color: white;
+        font-size: 15px;
+        font-weight: bold; }
+    #logueado div :nth-child(2) {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #logueado div :nth-child(2) div {
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        #logueado div :nth-child(2) div h4 {
+          text-align: center;
+          width: 100%;
+          height: 100%;
+          padding: 5px;
+          margin: 0px;
+          color: white;
+          font-size: 15px;
+          font-weight: bold; }
+    #logueado div :nth-child(3) {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #logueado div :nth-child(3) div {
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        #logueado div :nth-child(3) div :hover {
+          background: #89B3D9; }
+        #logueado div :nth-child(3) div form {
+          border-radius: 5px; }
+        #logueado div :nth-child(3) div button {
+          background: transparent;
+          border-color: transparent;
+          border-radius: 5px;
+          text-align: center;
+          width: 100%;
+          height: 100%;
+          padding: 5px;
+          margin: 0px;
+          color: white;
+          font-size: 15px;
+          font-weight: bold; }
 
 /*    */
 .global {
@@ -53,12 +97,12 @@ section h2 {
   background-color: #012840; }
   #header div > div > div:hover {
     border-radius: 6px;
-    background-color: #337AA6; }
+    background-color: #89B3D9; }
   #header .header a {
     color: white;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; }
   #header .header :hover {
-    background-color: #337AA6; }
+    background-color: #89B3D9; }
 
 #menu {
   background-color: #012840;
@@ -68,7 +112,7 @@ section h2 {
     font-style: italic;
     font-style: oblique; }
   #menu .botoncentrar div:hover {
-    background-color: #337AA6; }
+    background-color: #89B3D9; }
 
 .menuDesplegable {
   background-color: #012840;
@@ -76,7 +120,7 @@ section h2 {
   .menuDesplegable div a {
     color: white; }
   .menuDesplegable div:hover {
-    background-color: #337AA6; }
+    background-color: #89B3D9; }
 
 .lista > li > label {
   padding-left: 10px; }
@@ -101,6 +145,15 @@ html body {
 
 #header {
   display: flex; }
+  #header div > div > div {
+    padding: 0px; }
+  #header a {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
 
 #menu {
   display: flex; }
@@ -108,6 +161,7 @@ html body {
 .header {
   display: flex;
   justify-content: center;
+  padding: 0px;
   align-items: center; }
 
 .botoncentrar {
@@ -287,5 +341,46 @@ table {
   padding-top: 5px;
   padding-bottom: 5px;
   margin: 0px; }
+
+#logueado div {
+  display: flex;
+  align-items: center; }
+  #logueado div :nth-child(1) div {
+    display: flex;
+    align-items: center; }
+    #logueado div :nth-child(1) div h4 {
+      width: 100%;
+      height: 100%; }
+  #logueado div :nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #logueado div :nth-child(2) div {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #logueado div :nth-child(2) div h4 {
+        text-align: center;
+        width: 100%;
+        height: 100%; }
+  #logueado div :nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    #logueado div :nth-child(3) div {
+      display: flex;
+      justify-content: center;
+      align-items: center; }
+      #logueado div :nth-child(3) div :hover {
+        background: #89B3D9; }
+      #logueado div :nth-child(3) div form {
+        border-radius: 5px; }
+      #logueado div :nth-child(3) div button {
+        background: transparent;
+        border-color: transparent;
+        border-radius: 5px;
+        text-align: center;
+        width: 100%;
+        height: 100%; }
 
 /*# sourceMappingURL=estilos.css.map */
