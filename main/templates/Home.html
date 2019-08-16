@@ -53,6 +53,7 @@
                 <h2>CheckPoint</h2>
             </div>
         </div>
+{%if logueadoHtml%}
         <div id="logueado" class="container">
             <div class="row">
                 <div class="col-7">
@@ -62,19 +63,19 @@
                 </div>
                 <div class="col-3">
                     <div>
-                        <h4>UserName</h4>
+                        <h4>{{userHtml}}</h4>
                     </div>
                 </div>
                 <div class="col-2">
                     <div>
-                        <form action="/LogOut.html">
+                        <form action="/LogOut.html" method="POST">
                             <button type="submit">LogOut</button>
                         </form>
                     </div>
                 </div>
             </div>
-
         </div>
+{%endif%}
     </header>
     <main>
         <article class="container">

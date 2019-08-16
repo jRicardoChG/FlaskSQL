@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id= "html">
+<html lang="en" id="html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <script src="{{ url_for('static',filename='Javascript/funciones.js') }}" defer></script>
-    <title>Login Checkpoint</title>
+    <title> LogOut</title>
 </head>
 
 <body>
@@ -51,33 +51,12 @@
                 <h2>CheckPoint</h2>
             </div>
         </div>
-        <div id="logueado" class="container">
-            <div class="row">
-                <div class="col-7">
-                    <div>
-                        <h4>Bienvenido a Checkpoint</h4>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div>
-                        <h4>UserName</h4>
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div>
-                        <form action="/LogOut.html" method="POST">
-                            <button type="submit">LogOut</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </header>
     <main>
         <article class="container">
-            <h3>{{userHtml}}</h3>
-            <h3>{{passwordUserHtml}}</h3>
+            <div class = "container text-center">
+                <h3>Has cerrado sessión</h3>
+            </div>
         </article>
     </main>
 
