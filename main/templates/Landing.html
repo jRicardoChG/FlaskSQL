@@ -25,17 +25,19 @@
             </div>
             <div class="col-7 menutitulo">
                 <div class="row">
-                    <div class="header col-sm-12 col-md-3 text-center"><a href=Home.html>Home</a></div>
-                    <div class="header col-sm-12 col-md-3 text-center"><a href=Login.html>Login</a></div>
-                    <div class="header col-sm-12 col-md-3 text-center"><a href=Foro.html>Foro Checkpoint </a></div>
-                    <div class="header col-sm-12 col-md-3 text-center"><a href=Noticias.html>Noticias</a></div>
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Home.html">Home</a></div>
+                    {%if not logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a href="Login.html">Login</a></div>{%endif%}
+                    {%if logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a href="Landing.html">Busqueda</a></div>{%endif%}
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Foro.html">Foro Checkpoint </a></div>
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Noticias.html">Noticias</a></div>
                 </div>
             </div>
         </div>
         <input id="menubarras" type="checkbox">
         <div class="menuDesplegable">
             <div><a href="Home.html">Home</a></div>
-            <div><a href="Login.html">Login</a></div>
+            {%if not logueadoHtml%}<div><a href="Login.html">Login</a></div>{%endif%}
+            {%if logueadoHtml%}<div><a href="Landing.html">Busqueda</a></div>{%endif%}
             <div><a href="Foro.html">Foro Checkpoint</a></div>
             <div><a href="Noticias.html">Noticias</a></div>
         </div>
@@ -51,6 +53,8 @@
                 <h2>CheckPoint</h2>
             </div>
         </div>
+
+{%if logueadoHtml%}
         <div id="logueado" class="container">
             <div class="row">
                 <div class="col-7">
@@ -60,7 +64,7 @@
                 </div>
                 <div class="col-3">
                     <div>
-                        <h4>UserName</h4>
+                        <h4>{{userHtml}}</h4>                       
                     </div>
                 </div>
                 <div class="col-2">
@@ -72,6 +76,7 @@
                 </div>
             </div>
         </div>
+{%endif%}
 
     </header>
     <main>

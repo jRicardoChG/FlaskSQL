@@ -24,13 +24,12 @@ Session(app)
 
 ###########################################APP####################################################
 #variablesglobales 
-#session["userid"]=None
+
 ##################################################################################################
 
 @app.route("/Home.html",methods=["GET"])
 def home():
-
-    return render_template("Home.html",logueadoHtml=session["logueado"],userHtml=session["userid"])
+    return render_template("Home.html",logueadoHtml=session.get("logueado"),userHtml=session.get("userid"))
 
 @app.route("/Login.html",methods=["GET"])
 def login():
@@ -38,28 +37,27 @@ def login():
 
 @app.route("/Foro.html",methods=["GET"])
 def foro():
-    return render_template("Foro.html")
+    return render_template("Foro.html",logueadoHtml=session.get("logueado"),userHtml=session["userid"])
 
 @app.route("/Noticias.html",methods=["GET"])
 def noticias():
-    return render_template("Noticias.html")
+    return render_template("Noticias.html",logueadoHtml=session.get("logueado"),userHtml=session["userid"])
 
 @app.route("/LogOut.html",methods=["POST"])
 def logout():
-    if(session.get("userid") and session.get("passworduser")):
+    if(session.get("logueado")):
         session["userid"]=None
         session["passworduser"]=None
         session["logueado"]=None
-    return render_template("LogOut.html",logueadoHtml=session.get("logueado"))
+    return render_template("LogOut.html")
 
-@app.route("/Landing.html",methods=["POST"])
+@app.route("/Landing.html",methods=["GET","POST"])
 def landing():
     if request.method == "POST":
         session["userid"] = request.form.get("usuarioid")
         session["passworduser"] = request.form.get("passworduser")
         session["logueado"]=True
     return render_template("Landing.html",userHtml=session["userid"],passwordUserHtml=session["passworduser"],logueadoHtml=session["logueado"])
-
 ##################################################################################################
 
 # if __name__ == '__main__':
