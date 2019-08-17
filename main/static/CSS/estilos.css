@@ -82,12 +82,16 @@ article h2 {
   background-color: #012840;
   color: white;
   padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 5px; }
 
 section h2 {
   background-color: #012840;
   color: white;
   padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   border-radius: 5px; }
 
 #html h3 {
