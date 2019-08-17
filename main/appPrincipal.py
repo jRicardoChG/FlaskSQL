@@ -35,6 +35,10 @@ def home():
 def login():
     return render_template("Login.html")
 
+@app.route("/Registro.html",methods=["GET"])
+def registro():
+    return render_template("Registro.html")
+
 @app.route("/Foro.html",methods=["GET"])
 def foro():
     return render_template("Foro.html",logueadoHtml=session.get("logueado"),userHtml=session["userid"])

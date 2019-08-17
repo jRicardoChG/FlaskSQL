@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='CSS/estilos.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+        </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+        </script>
+    <script src="/static/Javascript/funciones.js" defer></script>
+    <title>Checkpoint</title>
+</head>
+
+<body>
+    <header>
+        <div id="header" class="container">
+            <div id="logo" class="col-5 header">
+                <img src="{{ url_for('static',filename='imgs/logo.jpg') }}">
+            </div>
+            <div class="col-7 menutitulo">
+                <div class="row">
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Home.html">Home</a></div>
+                    {%if not logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a
+                            href="Login.html">Login</a></div>{%endif%}
+                    {%if logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a
+                            href="Landing.html">Busqueda</a></div>{%endif%}
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Foro.html">Foro Checkpoint </a></div>
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Noticias.html">Noticias</a></div>
+                </div>
+            </div>
+        </div>
+        <input id="menubarras" type="checkbox">
+        <div class="menuDesplegable">
+            <div><a href="Home.html">Home</a></div>
+            {%if not logueadoHtml%}<div><a href="Login.html">Login</a></div>{%endif%}
+            {%if logueadoHtml%}<div><a href="Landing.html">Busqueda</a></div>{%endif%}
+            <div><a href="Foro.html">Foro Checkpoint</a></div>
+            <div><a href="Noticias.html">Noticias</a></div>
+        </div>
+        <div id="menu" class="hidden container">
+            <div class="botoncentrar col-2">
+                <div id="barras">
+                    <label id="menubarrasl" for="menubarras">
+                        <img
+                            src="{{url_for('static',filename='imgs/Menú-hamburguesa-herramienta-practica-o-icono-inutil.png')}}">
+                    </label>
+                </div>
+            </div>
+            <div id="titulo" class="col-10 text-center">
+                <h2>CheckPoint</h2>
+            </div>
+        </div>
+    </header>
+    <main>
+        <article class="container">
+            <h2>Registro Checkpoint</h2>
+            <div class="container">
+                <div class="text-center form-group">
+                        <h3>Registrate para acceder a la busqueda de libros y realizar tus propias reviews</h3>
+                </div>
+                <form action="/Home.html" method="POST">
+                    <div class="container">
+                        <div class="row form-group">
+                            <div class="col-12 col-sm-7">
+                                <label>Escribe tu nombre de usuario</label>
+                            </div>
+                            <div class="col-12 col-sm-5">
+                                <input class="form-control" type="text" name="rNombreUser" placeholder="Nombre de usuario">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-12 col-sm-7">
+                                <label>Escribe tu correo electronico</label>
+                            </div>
+                            <div class="col-12 col-sm-5">
+                                <input class="form-control" type="text" name="rEmailUser" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-7">
+                                <label>Escribe tu contraseña</label>
+                            </div>
+                            <div class="col-12 col-sm-5">
+                                <input class="form-control" type="password" name="rPasswordUser" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div class="row text-right">
+                            <div class="col-12 text-right">
+                                <label><small><i>Ver Contraseña</i></small></label>
+                                <input type="checkbox">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-12 col-sm-7">
+                                <label>Confirma tu contraseña</label>
+                            </div>
+                            <div class="col-12 col-sm-5">
+                                <input class="form-control" type="password" name="rConfirmPasswordUser" placeholder="Confirmar">
+                            </div>
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit">Registrar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </article>
+    </main>
+    <footer>
+        <section class="container">
+            <div id="contactos">
+                <h2>Contactos</h2>
+                <h3>Checkpoint</h3>
+                <h5><small>Pagina de noticias de videojuegos y creada como ejercicio para aprender a programar CSS y
+                        html</small></h5>
+                <h3>Creador</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3 imagenCreador">
+                            <img src="{{url_for('static',filename='imgs/logo.jpg')}}">
+                        </div>
+                        <div class="col-12 col-md-6 textoContactos">
+                            <div>
+                                <p><b>Nombre:</b></p>
+                                <p>Jaime Ricardo Chávez González</p>
+                                <p><b>Email:</b></p>
+                                <p>richago29@gmail.com</p>
+                                <p>Colombia</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 imagenCreador">
+                            <img src="{{url_for('static',filename='imgs/logo.jpg')}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>
