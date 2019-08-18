@@ -23,7 +23,11 @@ with open('books.csv') as csvfile:
 variable.pop(0)
 
 #guardo las filas en la base de datos y guardo todo con db.commit(), si no se hace, no se guardan y quedan en ram
-for isbn,title,autor,year in variable:
-    db.execute("INSERT INTO libros (isbn,titulo,autor,years) VALUES (:isbn,:title,:autor,:year);",{"isbn":isbn,"title":title,"autor":autor,"year":int(year)})
-db.commit()
+try:
+    for isbn,title,autor,year in variable:
+        db.execute("INSERT INTO libros (isbn,titulo,autor,years) VALUES (:isbn,:title,:autor,:year);",{"isbn":isbn,"title":title,"autor":autor,"year":int(year)})
+    db.commit()
+    print("todo ha sido insertado correctamente")
+except:
+    print("Un error ha ocurrido al insertar en la base de datos")    
 

@@ -20,6 +20,6 @@ CREATE TABLE reviews (
     review VARCHAR(256),
     estrellas INT,
     CONSTRAINT fk_libro FOREIGN KEY (id_libro) REFERENCES libros (id_libro),
-    CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES libros (id_usuario)
+    CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES usuarios (id_usuario)
 );
 

@@ -60,6 +60,16 @@
                         <h2>Inicia Sesión en Checkpoint</h2>
                 </div>
             <div class="container">
+                {%if noExisteHtml=="Noexiste"%}
+                <div class="row">
+                    <div class="col-12 text-center form-group"><h3 style="color:red;">Error: El usuario no existe en el sistema. Registrate para acceder a los beneficios de Checkpoint</h3></div>
+                </div>
+                {%endif%}
+                {%if noExisteHtml=="malaPass"%}
+                <div class="row">
+                    <div class="col-12 text-center form-group"><h3 style="color:red;">Error: Contraseña incorrecta</h3></div>
+                </div>
+                {%endif%}
                 <form id="LoginForm" name="formLogin" method="POST" action="/Landing.html">
                     <div class="container">
                         <div class="form-group">
@@ -89,6 +99,7 @@
                         </div>
                     </div>
                 </form>
+
                 <form action="/Registro.html" method="GET">
                     <div class="container">
                         <div class="form group" style="margin-top:10px;">

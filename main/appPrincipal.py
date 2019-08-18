@@ -1,9 +1,9 @@
-####################################SETUP################################################
+#######################################SETUP################################################
 import requests
 import os
 import json
 
-from funciones          import primera,admBD
+from funciones          import registrar,verificar
 from flask              import Flask, session,render_template,request
 from flask_session      import Session
 from flask_sqlalchemy   import SQLAlchemy
@@ -35,9 +35,18 @@ def home():
 def login():
     return render_template("Login.html")
 
-@app.route("/Registro.html",methods=["GET"])
+@app.route("/Registro.html",methods=["GET","POST"])
 def registro():
-    return render_template("Registro.html")
+    if request.method == "POST":
+        regNombre = request.form.get("rNombreUser")
+        regPassword = request.form.get("rPasswordUser")
+        regEmail = request.form.get("rEmailUser")
+        esto = registrar(regNombre,regEmail,regPassword)
+        if esto=="yaexiste":
+            return render_template("/Registro.html",errorHtml=esto)
+        return render_template("Registrado.html")
+    elif request.method == "GET":
+        return render_template("Registro.html") 
 
 @app.route("/Foro.html",methods=["GET"])
 def foro():
@@ -58,12 +67,13 @@ def logout():
 @app.route("/Landing.html",methods=["GET","POST"])
 def landing():
     if request.method == "POST":
-        session["userid"] = request.form.get("usuarioid")
-        session["passworduser"] = request.form.get("passworduser")
-        session["logueado"]=True
+        verificado = verificar(request.form.get("usuarioid"),request.form.get("passworduser"))
+        if(verificado=="Noexiste" or verificado=="malaPass"):
+            return render_template("Login.html",noExisteHtml=verificado)
+        else:    
+            session["userid"] = request.form.get("usuarioid")
+            session["passworduser"] = request.form.get("passworduser")
+            session["logueado"]=True
     return render_template("Landing.html",userHtml=session["userid"],passwordUserHtml=session["passworduser"],logueadoHtml=session["logueado"])
 ##################################################################################################
-
-# if __name__ == '__main__':
-#     app.run(port=8080, debug=True)
 
