@@ -24,3 +24,44 @@ def verificar(nomEmal,verPass):
             return "Noexiste"
         if verPass!=consulta[0][3]:
             return "malaPass"
+
+# crear consulta con filtros por parte del usuario
+def realBusqueda(ISBN,titulo,Autor):
+    limpTitulo = []
+    limpISBN = []
+    limpAutor = []
+
+    if(ISBN== None or ISBN=="" or ISBN==" "):
+        consISBN = ""
+        andISBN = ""
+    else:
+        andISBN = " and "
+        consISBN = "isbn like " 
+        limpISBN = ISBN.split(" ")
+        for valores in limpAutor:
+            consISBN+="'%"+valores+"%'"
+    
+    if(titulo== None or titulo=="" or titulo==" "):
+        consTitulo = ""
+        andTitulo = ""
+        andISBN = ""
+    else:
+        andTitulo = " and "
+        consTitulo = "titulo like " 
+        limpTitulo = titulo.split(" ")
+        for valores in limpTitulo:
+            consTitulo+="'%"+valores+"%'"
+
+    if(Autor== None or Autor=="" or Autor==" "):
+        consAutor = ""
+        andTitulo = ""
+    else:
+        consAutor = "autor like " 
+        limpAutor = Autor.split(" ")
+        for valores in limpAutor:
+            consAutor+="'%"+valores+"%'"
+    
+    consultaUser = db.execute("select * from libros where "+consAutor+andTitulo+consTitulo+andISBN+consISBN).fetchall()
+    print("asi quedo la consulta:","select * from libros where "+consAutor+andTitulo+consTitulo+andISBN+consISBN)
+    print("RESULTADO:",consultaUser)
+

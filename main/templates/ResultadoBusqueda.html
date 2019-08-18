@@ -14,7 +14,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
     </script>
     <script src="{{ url_for('static',filename='Javascript/funciones.js') }}" defer></script>
-    <title>Login Checkpoint</title>
+    <title>Resultado Busqueda</title>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div id="titulo" class="col-10 text-center">
-                <h2>CheckPoint</h2>
+                <h2>Checkpoint</h2>
             </div>
         </div>
 
@@ -82,15 +82,16 @@
     <main>
         <article class="container">
             <h2>Busqueda de libros</h2>
-            <div class="form-group">
-                <form action="/ResultadoBusqueda.html" method="POST">
-                    <input class="form-control" type="text" name="bTitulo" placeholder="Titulo del libro">
-                    <input class="form-control" type="text" name="bAutor" placeholder="Autor">
-                    <input class="form-control" type="text" name="bISBN" placeholder="ISBN del libro">
-                    <button class="btn btn-primary">Buscar</button>
-                </form>
+            <div class="container">
+                    <div class="form-group">
+                        <form action="/ResultadoBusqueda.html" method="POST">
+                            <input class="form-control" type="text" name="bTitulo" placeholder="Titulo del libro">
+                            <input type="text" class="form-control" name="bAutor" placeholder="Autor">
+                            <input type="text" class="form-control" name="bISBN" placeholder="ISBN del libro">
+                            <button class="btn btn-primary">Buscar</button>
+                        </form>
+                    </div>
             </div>
-
         </article>
     </main>
 

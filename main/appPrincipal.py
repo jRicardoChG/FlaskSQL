@@ -3,7 +3,7 @@ import requests
 import os
 import json
 
-from funciones          import registrar,verificar
+from funciones          import registrar,verificar,realBusqueda
 from flask              import Flask, session,render_template,request
 from flask_session      import Session
 from flask_sqlalchemy   import SQLAlchemy
@@ -35,19 +35,6 @@ def home():
 def login():
     return render_template("Login.html")
 
-@app.route("/Registro.html",methods=["GET","POST"])
-def registro():
-    if request.method == "POST":
-        regNombre = request.form.get("rNombreUser")
-        regPassword = request.form.get("rPasswordUser")
-        regEmail = request.form.get("rEmailUser")
-        esto = registrar(regNombre,regEmail,regPassword)
-        if esto=="yaexiste":
-            return render_template("/Registro.html",errorHtml=esto)
-        return render_template("Registrado.html")
-    elif request.method == "GET":
-        return render_template("Registro.html") 
-
 @app.route("/Foro.html",methods=["GET"])
 def foro():
     return render_template("Foro.html",logueadoHtml=session.get("logueado"),userHtml=session["userid"])
@@ -55,6 +42,17 @@ def foro():
 @app.route("/Noticias.html",methods=["GET"])
 def noticias():
     return render_template("Noticias.html",logueadoHtml=session.get("logueado"),userHtml=session["userid"])
+
+
+@app.route("/Registro.html",methods=["GET","POST"])
+def registro():
+    if request.method == "POST":
+        esto = registrar(request.form.get("rNombreUser"),request.form.get("rEmailUser"),request.form.get("rPasswordUser"))
+        if esto=="yaexiste":
+            return render_template("/Registro.html",errorHtml=esto)
+        return render_template("Registrado.html")
+    elif request.method == "GET":
+        return render_template("Registro.html") 
 
 @app.route("/LogOut.html",methods=["POST"])
 def logout():
@@ -75,5 +73,11 @@ def landing():
             session["passworduser"] = request.form.get("passworduser")
             session["logueado"]=True
     return render_template("Landing.html",userHtml=session["userid"],passwordUserHtml=session["passworduser"],logueadoHtml=session["logueado"])
-##################################################################################################
+
+@app.route("/ResultadoBusqueda.html",methods=["POST"])
+def resultado():
+    if request.method=="POST":
+        busqueda = realBusqueda(request.form.get("bISBN"),request.form.get("bTitulo"),request.form.get("bAutor"))
+    return render_template("ResultadoBusqueda.html",logueadoHtml=session.get("logueado"))
+###################################################################################################
 
