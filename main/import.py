@@ -22,9 +22,13 @@ with open('books.csv') as csvfile:
 #elimino los titilos del archivo dado que los años vienen en str y necesito guardarlos en entero, porque asi diseñe la base de datos
 variable.pop(0)
 
+#convierto todos los elementos de la base de datos a minuscula para facilitar su procesamiento
+
 #guardo las filas en la base de datos y guardo todo con db.commit(), si no se hace, no se guardan y quedan en ram
 try:
     for isbn,title,autor,year in variable:
+        title = title.lower()
+        autor = autor.lower()
         db.execute("INSERT INTO libros (isbn,titulo,autor,years) VALUES (:isbn,:title,:autor,:year);",{"isbn":isbn,"title":title,"autor":autor,"year":int(year)})
     db.commit()
     print("todo ha sido insertado correctamente")

@@ -38,8 +38,14 @@ def realBusqueda(ISBN,titulo,Autor):
         andISBN = " and "
         consISBN = "isbn like " 
         limpISBN = ISBN.split(" ")
-        for valores in limpAutor:
-            consISBN+="'%"+valores+"%'"
+        while limpISBN[0] == "":
+            limpISBN.pop(0)
+        for i in range(0,len(limpAutor)):
+            if(i==0):
+                consISBN+="'%"+limpAutor[i]+"%'"
+            else:
+                consISBN+=" and autor like "+"'%"+limpAutor[i]+"%'"
+
     
     if(titulo== None or titulo=="" or titulo==" "):
         consTitulo = ""
@@ -49,8 +55,14 @@ def realBusqueda(ISBN,titulo,Autor):
         andTitulo = " and "
         consTitulo = "titulo like " 
         limpTitulo = titulo.split(" ")
-        for valores in limpTitulo:
-            consTitulo+="'%"+valores+"%'"
+        while limpTitulo[0] == "":
+            limpTitulo.pop(0)
+        for i in range(0,len(limpTitulo)):
+            if(i==0):
+                consTitulo+="'%"+limpTitulo[i]+"%'"
+            else:
+                consTitulo+=" and titulo like "+"'%"+limpTitulo[i]+"%'"
+
 
     if(Autor== None or Autor=="" or Autor==" "):
         consAutor = ""
@@ -58,8 +70,13 @@ def realBusqueda(ISBN,titulo,Autor):
     else:
         consAutor = "autor like " 
         limpAutor = Autor.split(" ")
-        for valores in limpAutor:
-            consAutor+="'%"+valores+"%'"
+        while limpAutor[0] == "":
+            limpAutor.pop(0)
+        for i in range(0,len(limpAutor)):
+            if(i==0):
+                consAutor+="'%"+limpAutor[i]+"%'"
+            else:
+                consAutor+=" and autor like "+"'%"+limpAutor[i]+"%'"
     
     consultaUser = db.execute("select * from libros where "+consAutor+andTitulo+consTitulo+andISBN+consISBN).fetchall()
     print("asi quedo la consulta:","select * from libros where "+consAutor+andTitulo+consTitulo+andISBN+consISBN)
