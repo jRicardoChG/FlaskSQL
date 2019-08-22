@@ -1,0 +1,190 @@
+//estilos para las estrellas con hover
+#reviews {
+    #est1~label>div {
+        background: url("/static/imgs/listagris25.png") no-repeat center;
+        width: 25px;
+        height: 24px;
+    }
+    #est5:checked ~label>#es5 {
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    #est5:hover ~label>#es5 {
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    #est4:checked{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }      
+    #est4:hover{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }
+    #est3:checked{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es3{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }      
+    #est3:hover{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es3{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }
+    #est2:checked{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es3{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es2{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }      
+    #est2:hover{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es3{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es2{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }
+    #est1:checked{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es3{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es2{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es1{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }      
+    #est1:hover{
+        ~label>#es5{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es4{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es3{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es2{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+        ~label>#es1{
+            background: url("/static/imgs/lista25.png") no-repeat center;
+            width: 25px;
+            height: 24px;
+        }
+    }
+}
+
+//diseño de las reviews
+
+#reviewsUsers
+{
+    overflow: scroll;
+    width:100%;
+    height: 250px;
+    background-color:rgb(240,240,240);
+    div
+    {
+        background-color:rgb(240,240,240);
+        border-radius: 5px;
+    }
+}
+

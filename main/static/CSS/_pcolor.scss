@@ -13,6 +13,32 @@ $color4:#012840;
 $color4dark:#092638;
 $color5:#89B3D9;
 $color6:rgb(230, 230, 230);
+$color7:rgb(240, 240, 240);
+
+// colores resultados busqueda
+#libro
+{
+    h3{
+        text-align: center;
+        background-color:$colorFondo;
+        color:$colorFuente;
+        border-radius: 5px;
+        padding:2px; 
+    }
+}
+
+#resultadosBusquedaDiv
+{
+    #tTitulo
+    {
+        color: $colorFuente;
+        background-color: $color1;
+    }
+    #tcuerpo
+    {
+        background-color: $color6;
+    }
+}
 
 // estilos de la bara de logueado
 #logueado

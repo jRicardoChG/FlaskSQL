@@ -1,0 +1,52 @@
+/*estilos de la tabla de resultados*/
+
+#resultadosBusquedaDiv
+{
+    overflow: scroll;
+    height:400px;
+    button
+    {
+        border-color: transparent;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        width: 100%;
+        height:100%;
+        color:black;
+    }
+    #tTitulo>div
+    {
+        
+        font-weight: bold; 
+        text-align: center;
+    }
+    div
+    { 
+        text-align: center;
+    }
+
+    #tcuerpo 
+    {
+        :hover
+        {
+            background-color: white;
+            button{
+                background-color: white;
+            }
+        } 
+        div{       
+            div{
+                padding: 0px;
+                div{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0px;
+                }
+            }
+        }
+
+    };
+}

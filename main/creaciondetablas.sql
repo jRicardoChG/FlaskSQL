@@ -14,9 +14,9 @@ CREATE TABLE libros (
 );
 
 CREATE TABLE reviews (
-    id_reviews SERIAL PRIMARY KEY,
     id_libro SERIAL NOT NULL,
     id_usuario SERIAL NOT NULL,
+    PRIMARY KEY (id_libro,id_usuario),
     review VARCHAR(256),
     estrellas INT,
     CONSTRAINT fk_libro FOREIGN KEY (id_libro) REFERENCES libros (id_libro),

@@ -19,66 +19,106 @@ def registrar(nombre,email,contra):
 #verificar si usuario existe y contraseña correcta
 def verificar(nomEmal,verPass):
         consulta = db.execute("SELECT * FROM usuarios WHERE usuario=:esto;",{"esto":nomEmal}).fetchall()
-        print(consulta)
+        # print(consulta)
         if consulta==[]:
             return "Noexiste"
         if verPass!=consulta[0][3]:
             return "malaPass"
+        else:
+            return consulta
 
 # crear consulta con filtros por parte del usuario
 def realBusqueda(ISBN,titulo,Autor):
-    limpTitulo = []
-    limpISBN = []
-    limpAutor = []
-
-    if(ISBN== None or ISBN=="" or ISBN==" "):
-        consISBN = ""
+    if ISBN==None or ISBN=="":
+        ISBN = ""
         andISBN = ""
     else:
-        andISBN = " and "
-        consISBN = "isbn like " 
-        limpISBN = ISBN.split(" ")
-        while limpISBN[0] == "":
-            limpISBN.pop(0)
-        for i in range(0,len(limpAutor)):
-            if(i==0):
-                consISBN+="'%"+limpAutor[i]+"%'"
+        andISBN = "and isbn like "    
+        ISBN = list(ISBN.lower())
+        while ISBN != None and ISBN!=[]:
+            if ISBN[0]==" ":
+                ISBN.pop(0)
             else:
-                consISBN+=" and autor like "+"'%"+limpAutor[i]+"%'"
+                break
+        ISBN = "'%"+"".join(ISBN)+"%'"
 
-    
-    if(titulo== None or titulo=="" or titulo==" "):
-        consTitulo = ""
-        andTitulo = ""
-        andISBN = ""
-    else:
-        andTitulo = " and "
-        consTitulo = "titulo like " 
-        limpTitulo = titulo.split(" ")
-        while limpTitulo[0] == "":
-            limpTitulo.pop(0)
-        for i in range(0,len(limpTitulo)):
-            if(i==0):
-                consTitulo+="'%"+limpTitulo[i]+"%'"
-            else:
-                consTitulo+=" and titulo like "+"'%"+limpTitulo[i]+"%'"
-
-
-    if(Autor== None or Autor=="" or Autor==" "):
-        consAutor = ""
+    if titulo==None or titulo=="":
+        titulo = ""
         andTitulo = ""
     else:
-        consAutor = "autor like " 
-        limpAutor = Autor.split(" ")
-        while limpAutor[0] == "":
-            limpAutor.pop(0)
-        for i in range(0,len(limpAutor)):
-            if(i==0):
-                consAutor+="'%"+limpAutor[i]+"%'"
+        andTitulo = "and titulo like "    
+        titulo = list(titulo.lower())
+        while (titulo!=None and titulo!=[]):
+            if titulo[0]==" ":
+                titulo.pop(0)
             else:
-                consAutor+=" and autor like "+"'%"+limpAutor[i]+"%'"
-    
-    consultaUser = db.execute("select * from libros where "+consAutor+andTitulo+consTitulo+andISBN+consISBN).fetchall()
-    print("asi quedo la consulta:","select * from libros where "+consAutor+andTitulo+consTitulo+andISBN+consISBN)
-    print("RESULTADO:",consultaUser)
+                break
+        titulo = "'%"+"".join(titulo)+"%'"
 
+    if Autor==None or Autor=="":
+        Autor = ""
+        andTitulo = "titulo like "
+        if titulo =="":
+            andISBN = "isbn like "
+            andTitulo = ""
+        if ISBN =="":
+            andISBN = ""
+    else:
+        Autor = list(Autor.lower())
+        while Autor!=None and Autor!=[]:
+            if Autor[0]==" ":
+                Autor.pop(0)
+            else:
+                break
+        Autor = "autor like "+"'%"+"".join(Autor)+"%'"
+
+    if((titulo==[]or titulo=="") and (Autor=="" or Autor==[]) and (ISBN =="" or ISBN==[])):
+        return "no_hay_consulta"
+    else:
+        consultaUser = db.execute("select * from libros where "+Autor+andTitulo+titulo+andISBN+ISBN+" limit 30;").fetchall()
+        print("asi quedo la consulta:","select * from libros where "+Autor+andTitulo+titulo+andISBN+ISBN)
+        for i in range(0,len(consultaUser)):
+            consultaUser[i]=list(consultaUser[i])
+            consultaUser[i][2]=consultaUser[i][2].capitalize()
+            consultaUser[i][3] = consultaUser[i][3].split(" ")
+            for j in range(0,len(consultaUser[i][3])):
+                consultaUser[i][3][j] = consultaUser[i][3][j].capitalize()
+            consultaUser[i][3] = " ".join(consultaUser[i][3])
+        return consultaUser
+
+# registrar la review del usuario con method post 
+def registrarReview(idUsuario,idLibro,estrellas,review):
+    db.execute("INSERT INTO reviews (id_usuario,id_libro,review,estrellas) VALUES (:idusuario,:idlibro,:review,:estrellas);",{"idusuario":idUsuario,"idlibro":idLibro,"review":review,"estrellas":estrellas})
+    db.commit()
+    print("herecibido para registrar:",idUsuario,idLibro,estrellas,review)
+
+# realizar Querys de Reviews 
+def queryReviews(libro):
+    libro=list(libro)
+    print(libro)
+    for i in range(0,len(libro)):
+        if libro[i] == "'":
+            libro[i] = "''"
+    libro2 = "".join(libro)
+    query = db.execute("SELECT reviews.review,reviews.estrellas,usuarios.usuario,reviews.id_usuario,reviews.id_libro FROM reviews JOIN usuarios ON reviews.id_usuario=usuarios.id_usuario JOIN libros ON libros.id_libro=reviews.id_libro WHERE libros.titulo = "+"'"+libro2+"'").fetchall()
+    print("esto fue lo que recibio la query:",libro2)
+    return query
+
+def queryPersonal(idUser,titulo):
+    titulo=list(titulo)
+    print(titulo)
+    for i in range(0,len(titulo)):
+        if titulo[i] == "'":
+            titulo[i] = "''"
+    titulo2 = "".join(titulo)
+    query = db.execute("SELECT reviews.review,reviews.estrellas,usuarios.usuario,reviews.id_usuario,reviews.id_libro FROM reviews JOIN usuarios ON reviews.id_usuario=usuarios.id_usuario JOIN libros ON libros.id_libro=reviews.id_libro WHERE usuarios.usuario = "+"'"+idUser+"'"+ " and libros.titulo = "+"'"+titulo2+"'").fetchall()
+    return query
+
+#borrar review
+def borrarReview(idusuario,idlibro):
+    db.execute("DELETE from reviews where id_usuario = :id_usuario and id_libro = :id_libro;",{"id_usuario":idusuario,"id_libro":idlibro})
+    db.commit()
+
+def queryISBN(isbn):
+    query = db.execute("SELECT titulo,autor,years from libros where isbn = :isbn;",{"isbn":isbn}).fetchall()
+    return query

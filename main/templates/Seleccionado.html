@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" id="html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/estilos.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="{{ url_for('static',filename='Javascript/funciones.js') }}" defer></script>
+    <title>Resultado Busqueda</title>
+</head>
+
+<body>
+    <header>
+        <div id="header" class="container">
+            <div id="logo" class="col-5 header">
+                <img src="{{ url_for('static',filename='imgs/logo.jpg') }}">
+            </div>
+            <div class="col-7 menutitulo">
+                <div class="row">
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Home.html">Home</a></div>
+                    {%if not logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a
+                            href="Login.html">Login</a></div>{%endif%}
+                    {%if logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a
+                            href="Landing.html">Busqueda</a></div>{%endif%}
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Foro.html">Foro Checkpoint </a></div>
+                    <div class="header col-sm-12 col-md-3 text-center"><a href="Noticias.html">Noticias</a></div>
+                </div>
+            </div>
+        </div>
+        <input id="menubarras" type="checkbox">
+        <div class="menuDesplegable">
+            <div><a href="Home.html">Home</a></div>
+            {%if not logueadoHtml%}<div><a href="Login.html">Login</a></div>{%endif%}
+            {%if logueadoHtml%}<div><a href="Landing.html">Busqueda</a></div>{%endif%}
+            <div><a href="Foro.html">Foro Checkpoint</a></div>
+            <div><a href="Noticias.html">Noticias</a></div>
+        </div>
+        <div id="menu" class="hidden container">
+            <div class="botoncentrar col-2">
+                <div id="barras">
+                    <label id="menubarrasl" for="menubarras">
+                        <img
+                            src="{{ url_for('static',filename='imgs/Menú-hamburguesa-herramienta-practica-o-icono-inutil.png') }}">
+                    </label>
+                </div>
+            </div>
+            <div id="titulo" class="col-10 text-center">
+                <h2>Checkpoint</h2>
+            </div>
+        </div>
+
+        {%if logueadoHtml%}
+        <div id="logueado" class="container">
+            <div class="row">
+                <div class="col-7">
+                    <div>
+                        <h4>Bienvenido a Checkpoint</h4>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div>
+                        <h4>{{userHtml}}</h4>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div>
+                        <form action="/LogOut.html" method="POST">
+                            <button type="submit">LogOut</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endif%}
+    </header>
+    <main>
+        <article class="container">
+            <h2>Libro seleccionado</h2>
+            <div id="libro" class="container-flow">
+                <div class="row container-flow">
+                    <div class="col-12 col-md-6 container-flow">
+                        <h3>Datos</h3>
+                        <div class="col-12 container-flow row">
+                            <div class="col-6 "><b>Titulo:</b></div>
+                            <div class="col-6 ">{{selHtml["titulo"]}}</div>
+                        </div>
+                        <div class="col-12 container-flow row">
+                            <div class="col-6 "><b>Autor:</b></div>
+                            <div class="col-6 ">{{selHtml["autor"]}}</div>
+                        </div>
+                        <div class="col-12 container-flow row">
+                            <div class="col-6 "><b>Año de Salida:</b></div>
+                            <div class="col-6 ">{{selHtml["anio"]}}</div>
+                        </div>
+                        <div class="col-12 container-flow row">
+                            <div class="col-6 "><b>ISBN:</b></div>
+                            <div class="col-6 ">{{ApiHtml[0]["isbn"]}}</div>
+                        </div>
+                        <div class="col-12 container-flow row">
+                            <div class="col-6 "><b>Nota media:</b></div>
+                            <div class="col-6 ">{{ApiHtml[0]["average_rating"]}}</div>
+                        </div>
+                        <div class="col-12 container-flow row">
+                                <div class="col-6 "><b>Reviews Totales:</b></div>
+                                <div class="col-6 ">{{ApiHtml[0]["reviews_count"]}}</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 container-flow">
+                        <h3>Reviews</h3>
+                        <div id="reviewsUsers">
+                            <div>
+                                {%if reviewsHtml!=[] and reviewsHtml%}
+                                    {%for valor in reviewsHtml%}
+                                    <div style="border-color:gray; border-style:solid; border-width: 1px; border-radius: 5px;">
+                                        <div style="padding:3px 8px;display:flex; align-items: center;"><b>{{valor[2]}}</b></div>
+                                        <div style="padding:3px 15px;display:flex; align-items: center;">{{valor[1]}}<img src="/static/imgs/lista25.png"></div>
+                                        <div style="padding:3px 15px;display:flex; align-items: center; border-color:lightgray; border-style:solid; border-width: 1px; border-radius: 5px;"><p style="text-justify: justify;">{{valor[0]}}</p></div>
+                                    </div>
+                                    {%endfor%}
+                                {%endif%}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="reviews" class="container">
+                <form method="POST" action="/Seleccionado.html">
+                    <h3>Has tu propia review de este libro:</h3>
+                    <div class="row">
+                        <input type="radio" name="radio" id="est1" value="5" style="display: none;"></input>
+                        <label for="est1" style="order:5;">
+                            <div id="es1"></div>
+                        </label>
+                        <input type="radio" name="radio" value="4" id="est2" style="display: none;"></input>
+                        <label for="est2" style="order:4;">
+                            <div id="es2"></div>
+                        </label>
+                        <input type="radio" name="radio" value="3" id="est3" style="display: none;"></input>
+                        <label for="est3" style="order:3;">
+                            <div id="es3"></div>
+                        </label>
+                        <input type="radio" name="radio" value="2" id="est4" style="display: none;"></input>
+                        <label for="est4" style="order:2;">
+                            <div id="es4"></div>
+                        </label>
+                        <input type="radio" name="radio" value="1" id="est5" style="display: none;"></input>
+                        <label for="est5" style="order:1;">
+                            <div id="es5"></div>
+                        </label>
+                    </div>
+                    <div>
+                        {%if (not reviewsHtmlpersonal or reviewsHtmlpersonal==[])%}
+                            <textarea maxlength = "256" name="reviewUser" style="width:100%; height:150px;" placeholder="Escribe tu Review aqui!:"></textarea>
+                        {%else%}
+                            <textarea maxlength = "256" name="reviewUser" style="width:100%; height:150px;" readonly="" placeholder="{{reviewsHtmlpersonal[0][0]}}"></textarea>
+                        {%endif%}
+                    </div>
+                    <div class="text-right">
+                        {%if (not reviewsHtmlpersonal or reviewsHtmlpersonal==[])%}
+                        <button type="submit" class="btn btn-primary">Enviar Review</button>
+                        {%endif%}
+                    </div>
+                </form>
+                {%if not (not reviewsHtmlpersonal or reviewsHtmlpersonal==[])%}
+                <div class="text-right">
+                        <form method="POST" action="/borrarReview.html">
+                            <button class= "btn btn-primary" type="submit">Borrar Review</button>
+                        </form>
+                </div>
+                {%endif%}
+                {%if errorHtmlest%}
+                    <div><h5 style="color:red">error no has ingresado la review completa</h5></div>
+                {%endif%}
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <section class="container">
+            <div id="contactos">
+                <h2>Contactos</h2>
+                <h3>Checkpoint</h3>
+                <h5><small>Pagina de noticias de videojuegos y creada como ejercicio para aprender a programar CSS y
+                        html</small></h5>
+                <h3>Creador</h3>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-3 imagenCreador">
+                            <img src="{{ url_for('static',filename='imgs/logo.jpg') }}">
+                        </div>
+                        <div class="col-12 col-md-6 textoContactos">
+                            <div>
+                                <p><b>Nombre:</b></p>
+                                <p>Jaime Ricardo Chávez González</p>
+                                <p><b>Email:</b></p>
+                                <p>richago29@gmail.com</p>
+                                <p>Colombia</p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-3 imagenCreador">
+                            <img src="{{ url_for('static',filename='imgs/logo.jpg') }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+</body>
+
+</html>

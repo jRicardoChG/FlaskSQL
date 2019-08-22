@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" id= "html">
+<html lang="en" id="html">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,8 +27,10 @@
             <div class="col-7 menutitulo">
                 <div class="row">
                     <div class="header col-sm-12 col-md-3 text-center"><a href="Home.html">Home</a></div>
-                    {%if not logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a href="Login.html">Login</a></div>{%endif%}
-                    {%if logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a href="Landing.html">Busqueda</a></div>{%endif%}
+                    {%if not logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a
+                            href="Login.html">Login</a></div>{%endif%}
+                    {%if logueadoHtml%}<div class="header col-sm-12 col-md-3 text-center"><a
+                            href="Landing.html">Busqueda</a></div>{%endif%}
                     <div class="header col-sm-12 col-md-3 text-center"><a href="Foro.html">Foro Checkpoint </a></div>
                     <div class="header col-sm-12 col-md-3 text-center"><a href="Noticias.html">Noticias</a></div>
                 </div>
@@ -45,7 +48,8 @@
             <div class="botoncentrar col-2">
                 <div id="barras">
                     <label id="menubarrasl" for="menubarras">
-                        <img src="{{ url_for('static',filename='imgs/Menú-hamburguesa-herramienta-practica-o-icono-inutil.png') }}">
+                        <img
+                            src="{{ url_for('static',filename='imgs/Menú-hamburguesa-herramienta-practica-o-icono-inutil.png') }}">
                     </label>
                 </div>
             </div>
@@ -54,7 +58,7 @@
             </div>
         </div>
 
-{%if logueadoHtml%}
+        {%if logueadoHtml%}
         <div id="logueado" class="container">
             <div class="row">
                 <div class="col-7">
@@ -64,7 +68,7 @@
                 </div>
                 <div class="col-3">
                     <div>
-                        <h4>{{userHtml}}</h4>                       
+                        <h4>{{userHtml}}</h4>
                     </div>
                 </div>
                 <div class="col-2">
@@ -76,23 +80,65 @@
                 </div>
             </div>
         </div>
-{%endif%}
+        {%endif%}
 
     </header>
     <main>
         <article class="container">
             <h2>Busqueda de libros</h2>
             <div class="container">
-                    <div class="form-group">
-                        <form action="/ResultadoBusqueda.html" method="POST">
-                            <input class="form-control" type="text" name="bTitulo" placeholder="Titulo del libro">
-                            <input type="text" class="form-control" name="bAutor" placeholder="Autor">
-                            <input type="text" class="form-control" name="bISBN" placeholder="ISBN del libro">
-                            <button class="btn btn-primary">Buscar</button>
-                        </form>
-                    </div>
+                <div class="container">
+                    <form action="/ResultadoBusqueda.html" method="POST">
+                        <input class="form-control" type="text" name="bTitulo" placeholder="Titulo del libro">
+                        <input type="text" class="form-control" name="bAutor" placeholder="Autor">
+                        <input type="text" class="form-control" name="bISBN" placeholder="ISBN del libro">
+                        <button class="btn btn-primary">Buscar</button>
+                    </form>
+                </div>
             </div>
         </article>
+        {%if consultaUserHtml%}
+        <article class="container">
+            <h2>Resultados de la busqueda</h2>
+            <div class="container">
+                <div id="resultadosBusquedaDiv">
+                    <div id="tablaResultados">
+                        <div id="tTitulo" class="row">
+                            <div class="col-4">ISBN</div>
+                            <div class="col-4">Titulo</div>
+                            <div class="col-4">Autor</div>
+                        </div>
+                        <div id="tcuerpo">
+                            {%for linea in consultaUserHtml%}
+                            <form action="/Seleccionado.html">
+                                <input type="hidden" name="idSel" value="{{linea[0]}}">
+                                <input type="hidden" name="ibsnSel" value="{{linea[1]}}">
+                                <input type="hidden" name="tituloSel" value="{{linea[2]}}">
+                                <input type="hidden" name="autorSel" value="{{linea[3]}}">
+                                <input type="hidden" name="anioSel" value="{{linea[4]}}">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <button type="submit" method="GET">{{linea[1]}}</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="submit" method="GET">{{linea[2]}}</button>
+                                    </div>
+                                    <div class="col-4">
+                                        <button type="submit" method="GET">{{linea[3]}}</button>
+                                    </div>
+                                </div>
+                            </form>
+                            {%endfor%}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+        {%else%}
+        <article class="container">
+            <div><h5 style="color:red;"> No hay resultados para tu busqueda</h5></div>
+        </article>
+        {%endif%}
     </main>
 
     <footer>

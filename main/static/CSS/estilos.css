@@ -2,6 +2,19 @@
 /* Para poner border a todos los elementos : JAVASCRIPT */
 /*----------------------------------------------------------------------------*/
 /*Colores principales de la pagina*/
+#libro h3 {
+  text-align: center;
+  background-color: #012840;
+  color: white;
+  border-radius: 5px;
+  padding: 2px; }
+
+#resultadosBusquedaDiv #tTitulo {
+  color: white;
+  background-color: #023859; }
+#resultadosBusquedaDiv #tcuerpo {
+  background-color: #e6e6e6; }
+
 #logueado {
   background-color: #4c7397; }
   #logueado div {
@@ -388,5 +401,186 @@ table {
         text-align: center;
         width: 100%;
         height: 100%; }
+
+/*estilos de la tabla de resultados*/
+#resultadosBusquedaDiv {
+  overflow: scroll;
+  height: 400px; }
+  #resultadosBusquedaDiv button {
+    border-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    color: black; }
+  #resultadosBusquedaDiv #tTitulo > div {
+    font-weight: bold;
+    text-align: center; }
+  #resultadosBusquedaDiv div {
+    text-align: center; }
+  #resultadosBusquedaDiv #tcuerpo :hover {
+    background-color: white; }
+    #resultadosBusquedaDiv #tcuerpo :hover button {
+      background-color: white; }
+  #resultadosBusquedaDiv #tcuerpo div div {
+    padding: 0px; }
+    #resultadosBusquedaDiv #tcuerpo div div div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0px; }
+
+#libro {
+  margin: 0px; }
+  #libro div {
+    margin: 0px; }
+    #libro div div div div {
+      padding: 0px; }
+  #libro h3 {
+    width: 100%; }
+
+#reviews div {
+  margin: 0px; }
+  #reviews div div div {
+    padding: 0px; }
+#reviews h3 {
+  width: 100%; }
+
+#reviews #est1 ~ label > div {
+  background: url("/static/imgs/listagris25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est5:checked ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est5:hover ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est4:checked ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est4:checked ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est4:hover ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est4:hover ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est3:checked ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est3:checked ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est3:checked ~ label > #es3 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est3:hover ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est3:hover ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est3:hover ~ label > #es3 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:checked ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:checked ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:checked ~ label > #es3 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:checked ~ label > #es2 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:hover ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:hover ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:hover ~ label > #es3 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est2:hover ~ label > #es2 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:checked ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:checked ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:checked ~ label > #es3 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:checked ~ label > #es2 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:checked ~ label > #es1 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:hover ~ label > #es5 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:hover ~ label > #es4 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:hover ~ label > #es3 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:hover ~ label > #es2 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+#reviews #est1:hover ~ label > #es1 {
+  background: url("/static/imgs/lista25.png") no-repeat center;
+  width: 25px;
+  height: 24px; }
+
+#reviewsUsers {
+  overflow: scroll;
+  width: 100%;
+  height: 250px;
+  background-color: #f0f0f0; }
+  #reviewsUsers div {
+    background-color: #f0f0f0;
+    border-radius: 5px; }
 
 /*# sourceMappingURL=estilos.css.map */
