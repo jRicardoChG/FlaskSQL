@@ -3,7 +3,8 @@
 from sqlalchemy         import create_engine, exc
 from sqlalchemy.orm     import scoped_session, sessionmaker 
 
-engine = create_engine('postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb')
+engine = create_engine('postgres://gpoyfyitqdntzv:67f826c7ba2729a8f8e0b73ff6280b0332dff516d589a4d064426a0484fff1c2@ec2-54-83-55-125.compute-1.amazonaws.com:5432/d9p3vo3kqndk4i')
+#engine = create_engine('postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb')
 db = scoped_session(sessionmaker(bind=engine))
 
 #registrar usuario

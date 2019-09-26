@@ -13,9 +13,9 @@ from sqlalchemy.orm     import scoped_session, sessionmaker
 # configurar la base de datos, hago conexion con base de datos en posgres con usuario ricardo y mi app flask
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb'
-engine = create_engine('postgresql://ricardo:Theendworld1220@localhost:5432/miprimeradb')
-db = scoped_session(sessionmaker(bind=engine))
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://gpoyfyitqdntzv:67f826c7ba2729a8f8e0b73ff6280b0332dff516d589a4d064426a0484fff1c2@ec2-54-83-55-125.compute-1.amazonaws.com:5432/d9p3vo3kqndk4i'
+engine = create_engine('postgres://gpoyfyitqdntzv:67f826c7ba2729a8f8e0b73ff6280b0332dff516d589a4d064426a0484fff1c2@ec2-54-83-55-125.compute-1.amazonaws.com:5432/d9p3vo3kqndk4i',convert_unicode=True)
+db= scoped_session(sessionmaker(autocommit=False,autoflush=False,bind=engine))
 
 # Configure session to use filesystem
 app.config["SESSION_PERMANENT"] = False
@@ -42,16 +42,14 @@ def Api(algo):
         except:
             return 404
         dic = {}
-        if ApiT != None and ApiT != {}:
-            dic["titulo"] = ApiT[0]["titulo"]
-            dic["autor"] = ApiT[0]["autor"]
-            dic["years"] = ApiT[0]["years"]
-            dic["isbn"] = ApiR["books"][0]["isbn"]
-            dic["reviews_count"] = ApiR["books"][0]["reviews_count"]
-            dic["average_rating"] = ApiR["books"][0]["average_rating"]
-            return dic
-        else:
-            return 404
+        dic["titulo"] = ApiT[0]["titulo"]
+        dic["autor"] = ApiT[0]["autor"]
+        dic["years"] = ApiT[0]["years"]
+        dic["isbn"] = ApiR["books"][0]["isbn"]
+        dic["reviews_count"] = ApiR["books"][0]["reviews_count"]
+        dic["average_rating"] = ApiR["books"][0]["average_rating"]
+        return dic
+ 
 @app.route("/Home.html",methods=["GET"])
 def home():
     return render_template("Home.html",logueadoHtml=session.get("logueado"),userHtml=session.get("userid"))
